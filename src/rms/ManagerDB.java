@@ -107,4 +107,18 @@ public class ManagerDB {
         return password;
         
     }
+    
+    void updateDues(int customerId,int amount)throws SQLException{
+        int dues=getDues(customerId);
+        dues-=amount;
+        String query="Update table customer set pendingDues="+dues;
+        Statement stmt=conn.createStatement();
+        stmt.executeUpdate(query);
+        //add return value
+    }
+   
+    protected void finalize() throws Throwable {
+       conn.close();
+    }
+    
 }
