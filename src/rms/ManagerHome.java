@@ -341,23 +341,23 @@ public class ManagerHome extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel6.setText("RMS");
+        jLabel6.setText("Manager Portal");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel6)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         sidePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 110));

@@ -28,14 +28,15 @@ public class ManagerOperations {
     }
     
     boolean authenticate(String email,String enteredPassword)throws SQLException{
-        System.out.println("1");
+        
         String query="select password from manager where email=?";
         System.out.println("2");
         PreparedStatement stmt=conn.prepareStatement(query);
         stmt.setString(1, email);
         System.out.println("3");
         ResultSet rs=stmt.executeQuery();
-        rs.next();
+        if(!rs.next())
+            return false;
         String password=rs.getString(1);
         if(enteredPassword.equals(password))
             return true;
