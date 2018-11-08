@@ -40,28 +40,50 @@ class Engineer{
         this.project_id=project_id;
         this.engineer_id=Engineer_id;
         this.email=email;
-        String username="vedant ";
-        String password="pepsin212";
-        String address="jdbc:oracle:thin:@192.168.56.101:1521:xe";
-        try{
-            conn=DriverManager.getConnection(address,username,password);  
-        }
-        catch(SQLException e){
-           
-        }
+        
+    }
+    Engineer(){
+        
     }
     
-     void getDetails(String email){
-         
-     }
+    
     
     
 }
 
 class Customer{
-    int customer_id,pendingDues,project_id,flat_no;
-    String name,email;
-    Customer(){
+    int customer_id,pendingDues;
+    String name,email,contact;
+    Customer(){        
+    }
+}
+
+ class Project {
+    String name;
+    int project_id,etd,budget,customerId,managerId;
+    Project(){}
+}
+
+
+
+class Labour{
+    int labour_id,unit_number;
+    Labour(){
+    }
+}
+
+
+class Builder{
+    String name,contact,email;
+    int builder_id,project_id;
+    Builder(String name,int builder_id,int project_id,String contact,String email){
+        this.contact=contact;
+        this.email=email;
+        this.project_id =project_id;
+        this.builder_id=builder_id;
+        this.name=name;
         
+    }
+    Builder(){
     }
 }

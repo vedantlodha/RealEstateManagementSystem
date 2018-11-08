@@ -23,13 +23,12 @@ public class CustomerHome extends javax.swing.JFrame {
         this.email=email;
         cust=new CustomerOperations();
         String[] details=cust.getdetails(email);
-        nameTxt.setText(details[0]);
-        idTxt.setText(details[1]);
-        flatNoTxt.setText(details[2]);
-        ProjectIdTxt.setText(details[3]);
-        emailTxt.setText(details[4]);
-        etdTxt.setText(details[5]);
-        builderNameTxt.setText(details[6]);
+        lbl1.setText(details[0]);
+        lbl2.setText(details[1]);
+        lbl3.setText(details[2]);
+        lbl4.setText(details[3]);
+        lbl5.setText(details[4]);
+        
     }
 
     /**
@@ -58,18 +57,15 @@ public class CustomerHome extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        idTxt = new javax.swing.JLabel();
-        nameTxt = new javax.swing.JLabel();
-        ProjectIdTxt = new javax.swing.JLabel();
-        flatNoTxt = new javax.swing.JLabel();
-        emailTxt = new javax.swing.JLabel();
-        builderNameTxt = new javax.swing.JLabel();
-        etdTxt = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
+        lbl3 = new javax.swing.JLabel();
+        lbl4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        lbl5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,67 +150,66 @@ public class CustomerHome extends javax.swing.JFrame {
 
         jLabel4.setText("Customer ID");
 
-        jLabel5.setText("Flat number");
-
-        jLabel10.setText("Project ID");
-
-        jLabel11.setText("ETD");
+        jLabel10.setText("Contact");
 
         jLabel12.setText("Email");
 
         jPanel6.setBackground(new java.awt.Color(211, 211, 211));
 
-        idTxt.setText("ID");
+        lbl2.setText("lbl2");
 
-        nameTxt.setText("name");
+        lbl1.setText("name");
 
-        ProjectIdTxt.setText("Project id");
+        lbl3.setText("Contact");
 
-        flatNoTxt.setText("Flat Number");
+        lbl4.setText("emailTxt");
 
-        emailTxt.setText("emailTxt");
+        jButton1.setText("View Project Details");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        builderNameTxt.setText("builder name");
-
-        etdTxt.setText("etdTxt");
+        lbl5.setText("Address");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(125, 125, 125))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProjectIdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(flatNoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(builderNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(idTxt)
+                .addComponent(lbl2)
                 .addGap(18, 18, 18)
-                .addComponent(flatNoTxt)
+                .addComponent(lbl3)
                 .addGap(18, 18, 18)
-                .addComponent(ProjectIdTxt)
-                .addGap(18, 18, 18)
-                .addComponent(emailTxt)
-                .addGap(18, 18, 18)
-                .addComponent(etdTxt)
-                .addGap(18, 18, 18)
-                .addComponent(builderNameTxt)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(lbl4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(44, 44, 44))
         );
 
-        jLabel13.setText("Builder Name");
+        jLabel13.setText("Address");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,15 +227,13 @@ public class CustomerHome extends javax.swing.JFrame {
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5)))
+                                    .addComponent(jLabel3)))
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,13 +249,9 @@ public class CustomerHome extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel13)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -280,6 +269,13 @@ public class CustomerHome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CustProjectDetails obj=new CustProjectDetails(email);
+        obj.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,7 +308,7 @@ public class CustomerHome extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try{
-               new CustomerHome("thud").setVisible(true);
+               new CustomerHome("customer_1@gmail.com").setVisible(true);
                 }
                 catch(SQLException e){
                     System.out.println(e);
@@ -322,23 +318,16 @@ public class CustomerHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ProjectIdTxt;
-    private javax.swing.JLabel builderNameTxt;
     private javax.swing.JPanel button1;
-    private javax.swing.JLabel emailTxt;
-    private javax.swing.JLabel etdTxt;
-    private javax.swing.JLabel flatNoTxt;
-    private javax.swing.JLabel idTxt;
     private javax.swing.JPanel indicator1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -350,7 +339,11 @@ public class CustomerHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl4;
+    private javax.swing.JLabel lbl5;
     private javax.swing.JPanel mainHeading;
-    private javax.swing.JLabel nameTxt;
     // End of variables declaration//GEN-END:variables
 }

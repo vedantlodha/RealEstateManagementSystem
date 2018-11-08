@@ -255,20 +255,18 @@
                                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel10" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                                              <Component id="jLabel11" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                                               <Component id="jLabel12" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="jLabel13" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -286,13 +284,9 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -342,19 +336,9 @@
                     <Property name="text" type="java.lang.String" value="Customer ID"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Flat number"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Project ID"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="ETD"/>
+                    <Property name="text" type="java.lang.String" value="Contact"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
@@ -372,16 +356,19 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="idTxt" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="ProjectIdTxt" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="flatNoTxt" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="builderNameTxt" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="etdTxt" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                  <Component id="emailTxt" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
-                                  <Component id="nameTxt" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Component id="lbl2" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="lbl3" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="lbl4" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
+                                  <Component id="lbl1" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Component id="lbl5" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="76" max="32767" attributes="0"/>
                           </Group>
@@ -391,65 +378,61 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="nameTxt" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="lbl1" min="-2" pref="15" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="idTxt" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="flatNoTxt" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="ProjectIdTxt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="emailTxt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="etdTxt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="builderNameTxt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="50" max="32767" attributes="0"/>
+                              <Component id="lbl4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lbl5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="idTxt">
+                    <Component class="javax.swing.JLabel" name="lbl2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ID"/>
+                        <Property name="text" type="java.lang.String" value="lbl2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="nameTxt">
+                    <Component class="javax.swing.JLabel" name="lbl1">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="name"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="ProjectIdTxt">
+                    <Component class="javax.swing.JLabel" name="lbl3">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Project id"/>
+                        <Property name="text" type="java.lang.String" value="Contact"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="flatNoTxt">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Flat Number"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="emailTxt">
+                    <Component class="javax.swing.JLabel" name="lbl4">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="emailTxt"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="builderNameTxt">
+                    <Component class="javax.swing.JButton" name="jButton1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="builder name"/>
+                        <Property name="text" type="java.lang.String" value="View Project Details"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="etdTxt">
+                    <Component class="javax.swing.JLabel" name="lbl5">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="etdTxt"/>
+                        <Property name="text" type="java.lang.String" value="Address"/>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel13">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Builder Name"/>
+                    <Property name="text" type="java.lang.String" value="Address"/>
                   </Properties>
                 </Component>
               </SubComponents>

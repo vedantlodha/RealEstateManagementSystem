@@ -14,10 +14,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 public class CustomerOperations {
     Connection conn;
     CustomerOperations()throws SQLException{
-       String username="project ";
+       String username="projectDatabase ";
        String password="project";
        String address="jdbc:oracle:thin:@192.168.56.101:1521:xe";
        try{
@@ -48,32 +49,42 @@ public class CustomerOperations {
         rs.next();
         String name=rs.getString("name");
         int customerId=rs.getInt("customer_id");
-        int project_id=rs.getInt("project_id");
-        int flatNo=rs.getInt("flat_no");
-        int dues=rs.getInt("pendingdue");
-        query="select name from builder where project_id=?";
-        stmt=conn.prepareStatement(query);
-        stmt.setInt(1, project_id);
-        rs=stmt.executeQuery();
-        rs.next();
-        String builderName=rs.getString(1);
-        query="select etd from project where project_id=?";
-        stmt=conn.prepareStatement(query);
+        String address=rs.getString("address");
+        String contact=rs.getString("phone");
+       
+ 
         
-        stmt.setInt(1, project_id);
-        rs=stmt.executeQuery();
-        rs.next();
-        int etd=rs.getInt("etd");
         
-        String[] details={name,Integer.toString(customerId),Integer.toString(flatNo),Integer.toString(project_id),email,Integer.toString(etd),builderName};
+        String[] details={name,Integer.toString(customerId),contact,email,address};
         return details;
         
     }
+    
+     Vector<Project> getProject(String email)throws SQLException{
+        String query="select * from project where customer_id=(select customer_id from customer where email=?)";
+        PreparedStatement stmt=conn.prepareStatement(query);
+        stmt.setString(1, email);
+        ResultSet rs=stmt.executeQuery();
+        Vector<Project> projArray=new Vector<Project>();
+        int i=0;
+        while(rs.next()){
+            Project obj=new Project();
+            obj=new Project();
+            obj.name=rs.getString("name");
+            obj.project_id=rs.getInt("project_id");
+            obj.budget=rs.getInt("budget");
+            obj.etd=rs.getInt("etd");
+            projArray.add(obj);
+            i++;
+        }
+        return projArray;
+    }
+  
     public static void main(String[] args) throws SQLException{
         CustomerOperations cust=new CustomerOperations();
-        String arr[]=cust.getdetails("thud");
-        for(String s:arr){
-            System.out.println(s);
+        Vector<Project> arr=cust.getProject("customer_1@gmail.com");
+        System.out.println(arr.size());
+         
         }
     }
 }

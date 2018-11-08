@@ -5,8 +5,6 @@
  */
 package rms;
 
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,7 +57,6 @@ public class EngineerHome extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(980, 510));
@@ -178,16 +175,6 @@ public class EngineerHome extends javax.swing.JFrame {
 
         jLabel18.setText("Salary");
 
-        jButton1.setBackground(new java.awt.Color(0, 128, 255));
-        jButton1.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 14)); // NOI18N
-        jButton1.setText("Leave Project");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout cardParentLayout = new javax.swing.GroupLayout(cardParent);
         cardParent.setLayout(cardParentLayout);
         cardParentLayout.setHorizontalGroup(
@@ -222,8 +209,7 @@ public class EngineerHome extends javax.swing.JFrame {
                             .addGap(0, 0, Short.MAX_VALUE)
                             .addGroup(cardParentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel18)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 410, Short.MAX_VALUE))
         );
         cardParentLayout.setVerticalGroup(
@@ -257,9 +243,7 @@ public class EngineerHome extends javax.swing.JFrame {
                 .addGroup(cardParentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel18))
-                .addGap(42, 42, 42)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         mainPanel.add(cardParent, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 730, 410));
@@ -283,17 +267,6 @@ public class EngineerHome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        try{
-        EngineerOperations engg=new EngineerOperations();
-        int success=engg.leaveProject(email);
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(this, e);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,7 +308,6 @@ public class EngineerHome extends javax.swing.JFrame {
     private javax.swing.JPanel button1;
     private javax.swing.JPanel cardParent;
     private javax.swing.JPanel indicator1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

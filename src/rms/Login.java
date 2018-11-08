@@ -202,7 +202,21 @@ public class Login extends javax.swing.JFrame {
             
         }
         else if(index==1){
-            
+           try{
+             BuilderOperation build=new BuilderOperation();
+             authenticated= build.authenticate(email,password);
+             if(authenticated){
+                 BuilderHome builder=new BuilderHome(email);
+                 this.setVisible(false);
+                 builder.setVisible(true);
+             }
+             else {
+                 lbl_error.setText("invalid details");
+             }
+            }
+            catch(SQLException e){
+                JOptionPane.showMessageDialog(this, e);
+            }
         }
         else if(index==2){
             EngineerOperations eng=new EngineerOperations();
@@ -309,4 +323,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txt_email;
     private javax.swing.JPasswordField txt_password;
     // End of variables declaration//GEN-END:variables
-}
+} 
