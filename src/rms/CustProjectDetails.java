@@ -5,9 +5,11 @@
  */
 package rms;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,28 +21,53 @@ public class CustProjectDetails extends javax.swing.JFrame {
     /**
      * Creates new form CustProjectDetails
      */
+    Vector<Project> arr2;
     String email;
-    public CustProjectDetails(String email) {
+    int custId;
+    public CustProjectDetails(String email,int custId) {
         this.email=email;
         initComponents();
+        this.custId=custId;
        
-         try{
+        updateTables();
+         projectTable.setDefaultEditor(Object.class, null);
+         newProjectsTable.setDefaultEditor(Object.class, null);
+         button1.setBackground(Color.white);
+        button2.setBackground(Color.white);
+        
+        
+        indicator2.setBackground(Color.white);
+        
+        
+    }
+    void updateTables(){
+          try{
               CustomerOperations obj=new CustomerOperations();
              Vector<Project> arr=obj.getProject(email);
                 DefaultTableModel model = (DefaultTableModel) projectTable.getModel();
                 int rowCount = model.getRowCount();
                 for (int i = rowCount - 1; i >= 0; i--) {
                         model.removeRow(i);
-}
+                    }
                 for(Project p:arr){
                     model.addRow(new Object[]{p.project_id,p.name,p.etd,p.budget});
+                }
+                
+                
+                arr2=obj.getUpcomingProjects();
+                DefaultTableModel model2 = (DefaultTableModel) newProjectsTable.getModel();
+                int rowCount2 = model2.getRowCount();
+                for (int i = rowCount2 - 1; i >= 0; i--) {
+                        model2.removeRow(i);
+                    }
+                for(Project p:arr2){
+                    model2.addRow(new Object[]{p.project_id,p.name,p.etd,p.budget});
                 }
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(this, e);
 
         }
-        
     }
 
     /**
@@ -55,22 +82,32 @@ public class CustProjectDetails extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        button1 = new javax.swing.JPanel();
-        indicator1 = new javax.swing.JPanel();
+        button2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        indicator2 = new javax.swing.JPanel();
+        button1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        indicator1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        CardParent = new javax.swing.JPanel();
+        viewCurrentProjects = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         projectTable = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        viewNewProjects = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        newProjectsTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        sidePanel.setBackground(new java.awt.Color(201, 201, 201));
+        sidePanel.setBackground(java.awt.Color.white);
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(119, 119, 119));
@@ -98,29 +135,78 @@ public class CustProjectDetails extends javax.swing.JFrame {
 
         sidePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, -1));
 
+        button2.setBackground(java.awt.Color.white);
+        button2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button2MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button2MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button2MouseEntered(evt);
+            }
+        });
+        button2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(33, 21, 21));
+        jLabel1.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 13)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("View  New Projects");
+        button2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 210, 37));
+
+        indicator2.setBackground(new java.awt.Color(119, 119, 119));
+
+        javax.swing.GroupLayout indicator2Layout = new javax.swing.GroupLayout(indicator2);
+        indicator2.setLayout(indicator2Layout);
+        indicator2Layout.setHorizontalGroup(
+            indicator2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        indicator2Layout.setVerticalGroup(
+            indicator2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        button2.add(indicator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+
+        sidePanel.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 250, -1));
+
         button1.setBackground(java.awt.Color.white);
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button1MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button1MouseEntered(evt);
+            }
+        });
         button1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setBackground(new java.awt.Color(33, 21, 21));
+        jLabel3.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 13)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("View  Owned Projects");
+        button1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 210, 37));
+
         indicator1.setBackground(new java.awt.Color(119, 119, 119));
+        indicator1.setName(""); // NOI18N
 
         javax.swing.GroupLayout indicator1Layout = new javax.swing.GroupLayout(indicator1);
         indicator1.setLayout(indicator1Layout);
         indicator1Layout.setHorizontalGroup(
             indicator1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         indicator1Layout.setVerticalGroup(
             indicator1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        button1.add(indicator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jLabel1.setBackground(new java.awt.Color(33, 21, 21));
-        jLabel1.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 13)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("View Project");
-        button1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 210, 37));
+        button1.add(indicator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         sidePanel.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 250, -1));
 
@@ -173,6 +259,11 @@ public class CustProjectDetails extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 110));
 
+        CardParent.setLayout(new java.awt.CardLayout());
+
+        viewCurrentProjects.setBackground(java.awt.Color.white);
+        viewCurrentProjects.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         projectTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -183,27 +274,121 @@ public class CustProjectDetails extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(projectTable);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-        );
+        viewCurrentProjects.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 670, 310));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 670, 440));
+        jLabel5.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 24)); // NOI18N
+        jLabel5.setText("Owned Projects");
+        viewCurrentProjects.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 270, 50));
+
+        CardParent.add(viewCurrentProjects, "card3");
+
+        viewNewProjects.setBackground(java.awt.Color.white);
+        viewNewProjects.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        newProjectsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Project ID", "Name", "ETD", "Budget"
+            }
+        ));
+        jScrollPane2.setViewportView(newProjectsTable);
+
+        viewNewProjects.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 670, 310));
+
+        jButton1.setBackground(new java.awt.Color(0, 128, 255));
+        jButton1.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 13)); // NOI18N
+        jButton1.setText("Add");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        viewNewProjects.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 50, 30));
+
+        jLabel4.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 24)); // NOI18N
+        jLabel4.setText("New Projects");
+        viewNewProjects.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 50));
+
+        CardParent.add(viewNewProjects, "card2");
+
+        jPanel3.add(CardParent, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 670, 440));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 670, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int index=newProjectsTable.getSelectedRow();
+        
+        try{
+            CustomerOperations ops=new CustomerOperations();
+            boolean success=ops.addProjectToCustomer(custId, arr2.get(index).project_id);
+            System.out.println(custId+" "+arr2.get(index).project_id);
+            if(success)
+            JOptionPane.showMessageDialog(this, "Success\nManagement will soon contact you");
+            updateTables();
+            
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+        indicator2.setBackground(Color.white);
+        System.out.println(arr2.size());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        // TODO add your handling code here:
+        onclick(indicator1, indicator2);
+        viewCurrentProjects.setVisible(true);
+        viewNewProjects.setVisible(false);
+    }//GEN-LAST:event_button1MouseClicked
+
+    private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
+        // TODO add your handling code here:
+        onclick(indicator2,indicator1);
+        viewCurrentProjects.setVisible(false);
+        viewNewProjects.setVisible(true);
+    }//GEN-LAST:event_button2MouseClicked
+
+    private void button1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseEntered
+        // TODO add your handling code here:
+        onHover(button1);
+    }//GEN-LAST:event_button1MouseEntered
+
+    private void button1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseExited
+        // TODO add your handling code here:
+        onLeaveHover(button1);
+    }//GEN-LAST:event_button1MouseExited
+
+    private void button2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseEntered
+        // TODO add your handling code here:
+        onHover(button2);
+    }//GEN-LAST:event_button2MouseEntered
+
+    private void button2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseExited
+        // TODO add your handling code here:
+        onLeaveHover(button2);
+    }//GEN-LAST:event_button2MouseExited
+    void onHover(JPanel jp){
+        jp.setBackground(new Color(220,220,220));
+    }
+    void onLeaveHover(JPanel jp){
+        jp.setBackground(Color.white);
+    }
     /**
      * @param args the command line arguments
      */
+    void onclick(JPanel i1,JPanel i2){
+        i2.setBackground(Color.white);
+        i2.setForeground(Color.white);
+        i1.setBackground(new Color(115, 115,115));
+        i1.setForeground(new Color(115, 115,115));
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -231,25 +416,35 @@ public class CustProjectDetails extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustProjectDetails("customer_1@gmail.com").setVisible(true);
+                new CustProjectDetails("customer_1@gmail.com",801).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CardParent;
     private javax.swing.JPanel button1;
+    private javax.swing.JPanel button2;
     private javax.swing.JPanel indicator1;
+    private javax.swing.JPanel indicator2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable newProjectsTable;
     private javax.swing.JTable projectTable;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JPanel viewCurrentProjects;
+    private javax.swing.JPanel viewNewProjects;
     // End of variables declaration//GEN-END:variables
 }

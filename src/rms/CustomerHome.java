@@ -17,12 +17,15 @@ public class CustomerHome extends javax.swing.JFrame {
      * Creates new form CustomerHome
      */
     String email;
+    int custId;
     CustomerOperations cust;
     public CustomerHome(String email) throws SQLException{
         initComponents();
         this.email=email;
+     
         cust=new CustomerOperations();
         String[] details=cust.getdetails(email);
+        this.custId=Integer.parseInt(details[1]);
         lbl1.setText(details[0]);
         lbl2.setText(details[1]);
         lbl3.setText(details[2]);
@@ -272,7 +275,7 @@ public class CustomerHome extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CustProjectDetails obj=new CustProjectDetails(email);
+        CustProjectDetails obj=new CustProjectDetails(email,custId);
         obj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -79,12 +79,40 @@ public class CustomerOperations {
         }
         return projArray;
     }
-  
+    Vector<Project> getUpcomingProjects()throws SQLException{
+        String query="select * from project where customer_id is null";
+        PreparedStatement stmt=conn.prepareStatement(query);
+        ResultSet rs=stmt.executeQuery();
+        Vector<Project> projArray=new Vector<Project>();
+        int i=0;
+        while(rs.next()){
+            Project obj=new Project();
+            obj=new Project();
+            obj.name=rs.getString("name");
+            obj.project_id=rs.getInt("project_id");
+            obj.budget=rs.getInt("budget");
+            obj.etd=rs.getInt("etd");
+            projArray.add(obj);
+            i++;
+        }
+        return projArray;
+    }
+    boolean addProjectToCustomer(int custId,int projectId)throws SQLException{
+        boolean success=false;
+        String query="update project set customer_id=? where project_id=?";
+        PreparedStatement stmt=conn.prepareStatement(query);
+        stmt.setInt(1, custId);
+        stmt.setInt(2, projectId);
+        int count=stmt.executeUpdate();
+        if(count>0)
+            success=true;
+        
+        return success;       
+    }
     public static void main(String[] args) throws SQLException{
         CustomerOperations cust=new CustomerOperations();
-        Vector<Project> arr=cust.getProject("customer_1@gmail.com");
+        Vector<Project> arr=cust.getUpcomingProjects();
         System.out.println(arr.size());
          
         }
     }
-}
