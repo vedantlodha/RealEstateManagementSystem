@@ -259,7 +259,6 @@ public class ManagerHome extends javax.swing.JFrame {
         jLabel56 = new javax.swing.JLabel();
         engg_contact_txt = new javax.swing.JTextField();
         jSeparator48 = new javax.swing.JSeparator();
-        editEmployeeCard = new javax.swing.JPanel();
         addProjectCard = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -561,7 +560,7 @@ public class ManagerHome extends javax.swing.JFrame {
                 jLabel19MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 30, 40));
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 30, 40));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 110));
 
@@ -694,7 +693,7 @@ public class ManagerHome extends javax.swing.JFrame {
         addEmployeeCard.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 220, 10));
 
         jLabel16.setText("Employee type");
-        addEmployeeCard.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        addEmployeeCard.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 30));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select--", "Builder", "Engineer", "Customer", "Labour" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
@@ -1163,19 +1162,6 @@ public class ManagerHome extends javax.swing.JFrame {
         addEmployeeCard.add(addEmpParent, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 710, 250));
 
         cardParent.add(addEmployeeCard, "card3");
-
-        javax.swing.GroupLayout editEmployeeCardLayout = new javax.swing.GroupLayout(editEmployeeCard);
-        editEmployeeCard.setLayout(editEmployeeCardLayout);
-        editEmployeeCardLayout.setHorizontalGroup(
-            editEmployeeCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
-        );
-        editEmployeeCardLayout.setVerticalGroup(
-            editEmployeeCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        cardParent.add(editEmployeeCard, "card5");
 
         addProjectCard.setBackground(java.awt.Color.white);
         addProjectCard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1655,6 +1641,7 @@ public class ManagerHome extends javax.swing.JFrame {
         addEmployeeCard.setVisible(false);
         homeCard.setVisible(true);
         addProjectCard.setVisible(false);
+        ViewProjectCArd.setVisible(false);
         onClick(indicator1,new JPanel[]{indicator2,indicator3,indicator4,indicator5});
             
     }//GEN-LAST:event_button1MouseClicked
@@ -1965,6 +1952,7 @@ public class ManagerHome extends javax.swing.JFrame {
         addEmployeeCard.setVisible(false);
         viewInfoCard.setVisible(false);
         ViewProjectCArd.setVisible(true);
+        addProjectCard.setVisible(false);
         updateTable();
         
     }//GEN-LAST:event_button3MouseClicked
@@ -2148,7 +2136,6 @@ public class ManagerHome extends javax.swing.JFrame {
     private javax.swing.JTextField cust_id_txt;
     private javax.swing.JTextField cust_name_txt;
     private javax.swing.JTextField cust_phone_TXT;
-    private javax.swing.JPanel editEmployeeCard;
     private javax.swing.JTextField emailTxt;
     private javax.swing.JTextField engg_contact_txt;
     private javax.swing.JTextField engg_email_txt;

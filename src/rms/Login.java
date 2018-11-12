@@ -95,7 +95,7 @@ public class Login extends javax.swing.JFrame {
         jPanel7.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 183, 470, -1));
 
         jComboBox1.setBackground(new java.awt.Color(29, 29, 29));
-        jComboBox1.setForeground(new java.awt.Color(29, 29, 29));
+        jComboBox1.setForeground(java.awt.Color.white);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Builder", "Engineer", "Customer" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel7.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 236, -1, -1));
@@ -179,10 +179,12 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
         // TODO add your handling code here:
+      try{
         boolean authenticated=false;
         int index=jComboBox1.getSelectedIndex();
         String email=txt_email.getText().trim();
         String password=new String(txt_password.getPassword());
+  
         if(index==0){
             try{
              ManagerOperations managerObject=new ManagerOperations();
@@ -262,7 +264,10 @@ public class Login extends javax.swing.JFrame {
             
         }
         
-        
+    }
+      catch(Exception e){
+          JOptionPane.showMessageDialog(this, "Error Ecountered\nContact IT team");
+      }
         
         
         
