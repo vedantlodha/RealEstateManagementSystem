@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author vedant
+ * @author 
  */
 public class BuilderHome extends javax.swing.JFrame {
 
@@ -84,6 +84,7 @@ public class BuilderHome extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         personalInformation = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -249,6 +250,14 @@ public class BuilderHome extends javax.swing.JFrame {
         jLabel2.setText("Welcome");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 172, 45));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rms/icons/icons8-shutdown-24.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 30, 30));
+
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 740, 100));
 
         jPanel5.setLayout(new java.awt.CardLayout());
@@ -305,19 +314,17 @@ public class BuilderHome extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl1)
                     .addComponent(lbl2)
-                    .addComponent(lbl7)
-                    .addComponent(lbl8))
-                .addGap(0, 304, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl3)
                     .addComponent(lbl4)
                     .addComponent(lbl5)
-                    .addComponent(lbl6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl6)
+                    .addComponent(lbl7)
+                    .addComponent(lbl8))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,11 +590,21 @@ public class BuilderHome extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        UpdateBudget upd=new UpdateBudget(budget,projectId);
+        UpdateBudget upd=new UpdateBudget(budget,projectId,this);
         upd.setVisible(true);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        int opt=JOptionPane.showConfirmDialog(this, "Are you sure you wish to logout?");
+        if(opt==0){
+            Login lgn=new Login();
+            this.setVisible(false);
+            lgn.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -643,6 +660,7 @@ public class BuilderHome extends javax.swing.JFrame {
     private javax.swing.JPanel indicator1;
     private javax.swing.JPanel indicator4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

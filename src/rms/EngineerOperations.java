@@ -10,8 +10,8 @@ public class EngineerOperations{
 
     Connection conn;
     public EngineerOperations() {
-        String username="vedant ";
-        String password="pepsin212";
+        String username="projectDatabase";
+        String password="project";
         String address="jdbc:oracle:thin:@192.168.56.101:1521:xe";
         try{
             conn=DriverManager.getConnection(address,username,password);  
@@ -40,12 +40,28 @@ public class EngineerOperations{
         int success=stmt.executeUpdate();
         return success;
     }
-//    String[] getDetails(String email){
-////        query="select name,Engineer_Id,project_id"
-////        PreparedStatement stmt=
-//    }
+    String[] getDetails(String email)throws SQLException{
+        String query="select * from engineer where email=?";
+        PreparedStatement stmt=conn.prepareStatement(query);
+        stmt.setString(1,email);
+        ResultSet rs=stmt.executeQuery();
+        rs.next();
+        String name=rs.getString("name");
+        String pid=rs.getString("project_id");
+        String eid=rs.getString("engineer_id");
+        String qualification=rs.getString("qualification");
+        String salary=rs.getString("salary");
+        String mid=rs.getString("Manager_id");
+        String contact=rs.getString("contact");
+        String arr[]={name,eid,pid,qualification,email,salary,mid,contact};
+        return arr;
+    }
     public static void main(String[] args) throws SQLException{
-//        EngineerOperations eng=new EngineerOperations();
-//        System.out.println(eng.authenticate("qwert", "1234567890"));
+        EngineerOperations eng=new EngineerOperations();
+//        System.out.println(eng.authenticate("engineer_1@gmail.com", "YZA@1234"));
+        String arr[]=eng.getDetails("engineer_1@gmail.com");
+        for(String s:arr){
+            System.out.println(s);
+        }
     }
 }

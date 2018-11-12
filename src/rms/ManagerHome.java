@@ -155,6 +155,7 @@ public class ManagerHome extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         cardParent = new javax.swing.JPanel();
         homeCard = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -553,6 +554,14 @@ public class ManagerHome extends javax.swing.JFrame {
         jLabel9.setText("Real Estate Management System");
         jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 400, 40));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rms/icons/icons8-shutdown-24.png"))); // NOI18N
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 30, 40));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 110));
 
@@ -1645,7 +1654,7 @@ public class ManagerHome extends javax.swing.JFrame {
         viewInfoCard.setVisible(false);
         addEmployeeCard.setVisible(false);
         homeCard.setVisible(true);
-        addProjectCard.setVisible(true);
+        addProjectCard.setVisible(false);
         onClick(indicator1,new JPanel[]{indicator2,indicator3,indicator4,indicator5});
             
     }//GEN-LAST:event_button1MouseClicked
@@ -2046,6 +2055,16 @@ public class ManagerHome extends javax.swing.JFrame {
       
     }//GEN-LAST:event_cust_id_txtKeyPressed
 
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        // TODO add your handling code here:
+        int opt=JOptionPane.showConfirmDialog(this, "Are you sure you wish to logout?");
+        if(opt==0){
+            Login lgn=new Login();
+            this.setVisible(false);
+            lgn.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel19MouseClicked
+
     
     void onHover(JPanel jp){
         jp.setBackground(new Color(220,220,220));
@@ -2159,6 +2178,7 @@ public class ManagerHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel38;

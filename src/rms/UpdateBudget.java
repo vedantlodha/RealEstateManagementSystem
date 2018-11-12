@@ -17,7 +17,9 @@ public class UpdateBudget extends javax.swing.JFrame {
      * Creates new form UpdateBudget
      */
     int oldBudget,projectId;
-    public UpdateBudget(int oldBudget,int projectId) {
+    BuilderHome obj;
+    public UpdateBudget(int oldBudget,int projectId,BuilderHome obj) {
+        this.obj=obj;
         this.projectId=projectId;
         this.oldBudget=oldBudget;
         initComponents();
@@ -159,9 +161,10 @@ public class UpdateBudget extends javax.swing.JFrame {
             else
                 JOptionPane.showMessageDialog(this, "Error\nContact Management");
             this.setVisible(false);
+            obj.updateInfo();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, e);
+            JOptionPane.showMessageDialog(this, "Invalid Entry");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
    

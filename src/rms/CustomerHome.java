@@ -6,6 +6,7 @@
 package rms;
 
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +57,7 @@ public class CustomerHome extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -152,6 +154,14 @@ public class CustomerHome extends javax.swing.JFrame {
         jLabel2.setForeground(java.awt.Color.white);
         jLabel2.setText("Welcome");
         mainHeading.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 172, 45));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rms/icons/icons8-shutdown-24.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel5MousePressed(evt);
+            }
+        });
+        mainHeading.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 30, 40));
 
         jPanel4.add(mainHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 100));
 
@@ -296,6 +306,17 @@ public class CustomerHome extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
+        // TODO add your handling code here:
+        int opt=JOptionPane.showConfirmDialog(this, "Are you sure you wish to logout?");
+        if(opt==0){
+            Login lgn=new Login();
+            this.setVisible(false);
+            lgn.setVisible(true);
+        }
+       
+    }//GEN-LAST:event_jLabel5MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -348,6 +369,7 @@ public class CustomerHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

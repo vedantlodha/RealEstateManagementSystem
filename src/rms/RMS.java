@@ -21,26 +21,28 @@ public class RMS {
 	
 //        Login lg=new Login();
 //        lg.setVisible(true);
-
-        Process p;
-		try {
-                        String password="vfhsdnbf";
-                        String command="qrencode "+password+" -o password.png";
-			p = Runtime.getRuntime().exec(command);
-			p.waitFor();
-                        command ="feh password.png";
-                        p=Runtime.getRuntime().exec(command);
-//			BufferedReader reader = 
-//                            new BufferedReader(new InputStreamReader(p.getInputStream()));
+            Login lgn=new Login();
+                        lgn.setVisible(true);
+//        Process p;
+//		try {
+//                        
+////                        String password="vfhsdnbf";
+////                        String command="qrencode "+password+" -o password.png";
+////			p = Runtime.getRuntime().exec(command);
+////			p.waitFor();
+////                        command ="feh password.png";
+////                        p=Runtime.getRuntime().exec(command);
+//////			BufferedReader reader = 
+//////                            new BufferedReader(new InputStreamReader(p.getInputStream()));
+//////
+//////                        String line = "";			
+//////			while ((line = reader.readLine())!= null) {
+//////				output.append(line + "\n");
+//			}
 //
-//                        String line = "";			
-//			while ((line = reader.readLine())!= null) {
-//				output.append(line + "\n");
-			}
-
-		 catch (Exception e) {
-			e.printStackTrace();
-		}
+//		 catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 
 
