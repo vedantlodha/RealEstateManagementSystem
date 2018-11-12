@@ -5,8 +5,10 @@
  */
 package rms;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,11 +19,22 @@ public class BuilderHome extends javax.swing.JFrame {
     /**
      * Creates new form BuilderHome
      */
+    String email;
+    int budget,projectId;
     public BuilderHome(String email) {
         initComponents();
-        try{
+       this.email=email;
+        updateInfo();
+        indicator4.setBackground(Color.white);
+        
+    }
+    void updateInfo(){
+        
+         try{
             BuilderOperation build=new BuilderOperation();
-            
+            /***************************
+         * for personal Information
+         */
             String [] details=build.getDetails(email);
             lbl1.setText(details[0]);
             lbl2.setText(details[1]);
@@ -31,14 +44,24 @@ public class BuilderHome extends javax.swing.JFrame {
             lbl6.setText(details[5]);
             lbl7.setText(details[6]);
             lbl8.setText(details[7]);
+            /***************************
+         * for project Information
+         */
+         details=build.getProjectDetais(email);
+         pname.setText(details[0]);
+         pid.setText(details[1]);
+         petd.setText(details[2]);
+         pbudget.setText(details[3]);
+         pcustomer.setText(details[5]);
+         pcemail.setText(details[6]);
+         this.budget=Integer.parseInt(details[3])  ;
+         this.projectId=Integer.parseInt(pid.getText());
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(this, e);
         }
         
-        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,8 +75,11 @@ public class BuilderHome extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         button1 = new javax.swing.JPanel();
-        indicator2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        indicator1 = new javax.swing.JPanel();
+        button2 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        indicator4 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -79,16 +105,28 @@ public class BuilderHome extends javax.swing.JFrame {
         lbl6 = new javax.swing.JLabel();
         lbl7 = new javax.swing.JLabel();
         lbl8 = new javax.swing.JLabel();
-        payment = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        paid_txt = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
+        ProjectInfo = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        pname = new javax.swing.JLabel();
+        pid = new javax.swing.JLabel();
+        petd = new javax.swing.JLabel();
+        pbudget = new javax.swing.JLabel();
+        pcustomer = new javax.swing.JLabel();
+        pcemail = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(201, 201, 201));
+        jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(119, 119, 119));
@@ -121,31 +159,76 @@ public class BuilderHome extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 button1MouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button1MouseEntered(evt);
+            }
         });
         button1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        indicator2.setBackground(new java.awt.Color(119, 119, 119));
-
-        javax.swing.GroupLayout indicator2Layout = new javax.swing.GroupLayout(indicator2);
-        indicator2.setLayout(indicator2Layout);
-        indicator2Layout.setHorizontalGroup(
-            indicator2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        indicator2Layout.setVerticalGroup(
-            indicator2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        button1.add(indicator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(33, 21, 21));
         jLabel15.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 13)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Home");
+        jLabel15.setText("Personal Information");
         button1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 210, 37));
 
-        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 270, -1));
+        indicator1.setBackground(new java.awt.Color(119, 119, 119));
+        indicator1.setName(""); // NOI18N
+
+        javax.swing.GroupLayout indicator1Layout = new javax.swing.GroupLayout(indicator1);
+        indicator1.setLayout(indicator1Layout);
+        indicator1Layout.setHorizontalGroup(
+            indicator1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        indicator1Layout.setVerticalGroup(
+            indicator1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        button1.add(indicator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+
+        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 270, -1));
+
+        button2.setBackground(java.awt.Color.white);
+        button2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button2MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button2MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button2MouseEntered(evt);
+            }
+        });
+        button2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel24.setBackground(new java.awt.Color(33, 21, 21));
+        jLabel24.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 13)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Project Information");
+        button2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 210, 37));
+
+        indicator4.setBackground(new java.awt.Color(119, 119, 119));
+        indicator4.setName(""); // NOI18N
+
+        javax.swing.GroupLayout indicator4Layout = new javax.swing.GroupLayout(indicator4);
+        indicator4.setLayout(indicator4Layout);
+        indicator4Layout.setHorizontalGroup(
+            indicator4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        indicator4Layout.setVerticalGroup(
+            indicator4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        button2.add(indicator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+
+        jPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 270, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 470));
 
@@ -225,13 +308,16 @@ public class BuilderHome extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl1)
                     .addComponent(lbl2)
-                    .addComponent(lbl3)
-                    .addComponent(lbl4)
-                    .addComponent(lbl5)
-                    .addComponent(lbl6)
                     .addComponent(lbl7)
                     .addComponent(lbl8))
                 .addGap(0, 304, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl3)
+                    .addComponent(lbl4)
+                    .addComponent(lbl5)
+                    .addComponent(lbl6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,25 +348,24 @@ public class BuilderHome extends javax.swing.JFrame {
             .addGroup(personalInformationLayout.createSequentialGroup()
                 .addGroup(personalInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(personalInformationLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel7))
-                    .addGroup(personalInformationLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(personalInformationLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(personalInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
+                        .addGap(50, 50, 50)
+                        .addGroup(personalInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel10))
-                        .addGap(38, 38, 38)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(personalInformationLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(personalInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         personalInformationLayout.setVerticalGroup(
             personalInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,9 +376,9 @@ public class BuilderHome extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(personalInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(personalInformationLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(36, 36, 36)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(13, 13, 13)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
@@ -315,67 +400,194 @@ public class BuilderHome extends javax.swing.JFrame {
 
         jPanel5.add(personalInformation, "card2");
 
-        payment.setBackground(java.awt.Color.white);
+        ProjectInfo.setBackground(java.awt.Color.white);
 
-        jLabel17.setText("Paid Amount");
+        jPanel6.setBackground(new java.awt.Color(91, 91, 91));
 
-        paid_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        pname.setForeground(java.awt.Color.white);
+        pname.setText("Project");
 
-        jSeparator2.setBackground(new java.awt.Color(1, 1, 1));
+        pid.setForeground(java.awt.Color.white);
+        pid.setText("project");
 
-        jButton1.setText("Confirm");
+        petd.setForeground(java.awt.Color.white);
+        petd.setText("Customer");
+
+        pbudget.setForeground(java.awt.Color.white);
+        pbudget.setText("Customer");
+
+        pcustomer.setForeground(java.awt.Color.white);
+        pcustomer.setText("Customer");
+
+        pcemail.setForeground(java.awt.Color.white);
+        pcemail.setText("Customer");
+
+        jButton1.setBackground(java.awt.Color.white);
+        jButton1.setText("Update budget");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout paymentLayout = new javax.swing.GroupLayout(payment);
-        payment.setLayout(paymentLayout);
-        paymentLayout.setHorizontalGroup(
-            paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paymentLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel17)
-                .addGap(28, 28, 28)
-                .addGroup(paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addGroup(paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(paid_txt, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                        .addComponent(jSeparator2)))
-                .addContainerGap(453, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pname)
+                    .addComponent(pid)
+                    .addComponent(pcemail))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(petd)
+                    .addComponent(pbudget)
+                    .addComponent(pcustomer))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 156, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
         );
-        paymentLayout.setVerticalGroup(
-            paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paymentLayout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addGroup(paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(paid_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pname)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(petd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pbudget)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pcustomer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pcemail)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(26, 26, 26))
         );
 
-        jPanel5.add(payment, "card3");
+        jLabel16.setText("Name");
+
+        jLabel17.setText("Project ID");
+
+        jLabel18.setText("Customer name");
+
+        jLabel19.setText("Customer Email");
+
+        jLabel20.setText("ETD");
+
+        jLabel21.setText("Budget");
+
+        jLabel23.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 24)); // NOI18N
+        jLabel23.setText("Project Information");
+
+        javax.swing.GroupLayout ProjectInfoLayout = new javax.swing.GroupLayout(ProjectInfo);
+        ProjectInfo.setLayout(ProjectInfoLayout);
+        ProjectInfoLayout.setHorizontalGroup(
+            ProjectInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProjectInfoLayout.createSequentialGroup()
+                .addGroup(ProjectInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ProjectInfoLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(ProjectInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ProjectInfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(ProjectInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(197, 197, 197))
+        );
+        ProjectInfoLayout.setVerticalGroup(
+            ProjectInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProjectInfoLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel23)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ProjectInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ProjectInfoLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel19))
+                    .addGroup(ProjectInfoLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(79, 79, 79))
+        );
+
+        jPanel5.add(ProjectInfo, "card3");
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 740, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
         // TODO add your handling code here:
+        updateInfo();
         personalInformation.setVisible(true);
-        payment.setVisible(false);
+        ProjectInfo.setVisible(false);
+        onclick(indicator1,indicator4);
     }//GEN-LAST:event_button1MouseClicked
+
+    private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
+        // TODO add your handling code here:
+        updateInfo();
+         personalInformation.setVisible(false);
+        ProjectInfo.setVisible(true);
+        onclick(indicator4,indicator1);
+    }//GEN-LAST:event_button2MouseClicked
+
+    private void button1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseEntered
+        // TODO add your handling code here:
+        onHover(button1);
+    }//GEN-LAST:event_button1MouseEntered
+
+    private void button1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseExited
+        // TODO add your handling code here:
+        onLeaveHover(button1);
+    }//GEN-LAST:event_button1MouseExited
+
+    private void button2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseEntered
+        // TODO add your handling code here:
+        onHover(button2);
+    }//GEN-LAST:event_button2MouseEntered
+
+    private void button2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseExited
+        // TODO add your handling code here:
+        onLeaveHover(button2);
+    }//GEN-LAST:event_button2MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        UpdateBudget upd=new UpdateBudget(budget,projectId);
+        upd.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,10 +623,25 @@ public class BuilderHome extends javax.swing.JFrame {
             }
         });
     }
+    void onclick(JPanel i1,JPanel i2){
+        i2.setBackground(Color.white);
+        i2.setForeground(Color.white);
+        i1.setBackground(new Color(115, 115,115));
+        i1.setForeground(new Color(115, 115,115));
+    }
+    void onHover(JPanel jp){
+        jp.setBackground(new Color(220,220,220));
+    }
+    void onLeaveHover(JPanel jp){
+        jp.setBackground(Color.white);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ProjectInfo;
     private javax.swing.JPanel button1;
-    private javax.swing.JPanel indicator2;
+    private javax.swing.JPanel button2;
+    private javax.swing.JPanel indicator1;
+    private javax.swing.JPanel indicator4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -422,8 +649,15 @@ public class BuilderHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -436,6 +670,7 @@ public class BuilderHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl1;
@@ -446,8 +681,12 @@ public class BuilderHome extends javax.swing.JFrame {
     private javax.swing.JLabel lbl6;
     private javax.swing.JLabel lbl7;
     private javax.swing.JLabel lbl8;
-    private javax.swing.JTextField paid_txt;
-    private javax.swing.JPanel payment;
+    private javax.swing.JLabel pbudget;
+    private javax.swing.JLabel pcemail;
+    private javax.swing.JLabel pcustomer;
     private javax.swing.JPanel personalInformation;
+    private javax.swing.JLabel petd;
+    private javax.swing.JLabel pid;
+    private javax.swing.JLabel pname;
     // End of variables declaration//GEN-END:variables
 }

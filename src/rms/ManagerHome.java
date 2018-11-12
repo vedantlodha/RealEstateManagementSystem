@@ -205,7 +205,7 @@ public class ManagerHome extends javax.swing.JFrame {
         jLabel60 = new javax.swing.JLabel();
         Builder = new javax.swing.JPanel();
         buil_name_txt = new javax.swing.JTextField();
-        emailTxt5 = new javax.swing.JTextField();
+        emailTxt = new javax.swing.JTextField();
         contact_txt = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
@@ -754,6 +754,11 @@ public class ManagerHome extends javax.swing.JFrame {
                 cust_id_txtActionPerformed(evt);
             }
         });
+        cust_id_txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cust_id_txtKeyPressed(evt);
+            }
+        });
         Customer.add(cust_id_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 210, 30));
 
         jLabel53.setFont(new java.awt.Font("Bitstream Vera Sans", 1, 14)); // NOI18N
@@ -857,15 +862,15 @@ public class ManagerHome extends javax.swing.JFrame {
         });
         Builder.add(buil_name_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 210, 30));
 
-        emailTxt5.setBackground(new java.awt.Color(115, 115, 115));
-        emailTxt5.setForeground(new java.awt.Color(254, 254, 254));
-        emailTxt5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        emailTxt5.addActionListener(new java.awt.event.ActionListener() {
+        emailTxt.setBackground(new java.awt.Color(115, 115, 115));
+        emailTxt.setForeground(new java.awt.Color(254, 254, 254));
+        emailTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        emailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTxt5ActionPerformed(evt);
+                emailTxtActionPerformed(evt);
             }
         });
-        Builder.add(emailTxt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, 30));
+        Builder.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, 30));
 
         contact_txt.setBackground(new java.awt.Color(115, 115, 115));
         contact_txt.setForeground(new java.awt.Color(254, 254, 254));
@@ -1679,7 +1684,19 @@ public class ManagerHome extends javax.swing.JFrame {
             ManagerOperations man=new ManagerOperations();
             String password=man.addEngineersToDatabase(name, engineer_id, project_id, salary, email, contact, manager_id, qualification);
             if(password!=null)
-                JOptionPane.showMessageDialog(this, "the password for the user is"+password);
+                JOptionPane.showMessageDialog(this, "Scan the QR code for password");
+            try {
+                       Process p;
+                        String command="qrencode "+password+" -s 10 -o password.png";
+			p = Runtime.getRuntime().exec(command);
+			p.waitFor();
+                        command ="feh password.png";
+                        p=Runtime.getRuntime().exec(command);
+			}
+
+		 catch (Exception e) {
+			e.printStackTrace();
+		}
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(this, e);
@@ -1690,9 +1707,9 @@ public class ManagerHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buil_name_txtActionPerformed
 
-    private void emailTxt5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxt5ActionPerformed
+    private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailTxt5ActionPerformed
+    }//GEN-LAST:event_emailTxtActionPerformed
 
     private void contact_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contact_txtActionPerformed
         // TODO add your handling code here:
@@ -1715,7 +1732,7 @@ public class ManagerHome extends javax.swing.JFrame {
         String name=buil_name_txt.getText();
         String address=addressTxt4.getText();
         String contact=contact_txt.getText();
-        String email=emailTxt5.getText();
+        String email=emailTxt.getText();
         String qualification=this.qualification.getText();
         int builderId=Integer.parseInt(buil_id_text.getText());
         int projectId=Integer.parseInt(buil_projID.getText());
@@ -1724,8 +1741,20 @@ public class ManagerHome extends javax.swing.JFrame {
         String password;
         ManagerOperations man=new ManagerOperations();
         try{
-            password=man.addBiuilderToDatabase(name, builderId, address, projectId, qualification, email, salary, contact, managerID);
-            JOptionPane.showMessageDialog(this, "Password for the user is "+password);
+            password=man.addBiuilderToDatabase(name, builderId, address, projectId, email,qualification, salary, contact, managerID);
+            JOptionPane.showMessageDialog(this, "Scan the QR Code for password");
+            try {
+                        Process p;
+                        String command="qrencode "+password+" -s 10 -o password.png";
+			p = Runtime.getRuntime().exec(command);
+			p.waitFor();
+                        command ="feh password.png";
+                        p=Runtime.getRuntime().exec(command);		
+			}
+
+		 catch (Exception e) {
+			e.printStackTrace();
+		}
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this, e);
@@ -1763,7 +1792,21 @@ public class ManagerHome extends javax.swing.JFrame {
             ManagerOperations obj=new ManagerOperations();
             String password;
             password = obj.addCustomerToDatabase(name, customer_id, email, address, phone);
-            JOptionPane.showMessageDialog(this, "Password for the customer is:"+password);
+            JOptionPane.showMessageDialog(this, "Scan the QR code for password");
+            
+            try {
+                        Process p;
+                        String command="qrencode "+password+" -s 10  -o password.png";
+			p = Runtime.getRuntime().exec(command);
+			p.waitFor();
+                        command ="feh password.png";
+                        p=Runtime.getRuntime().exec(command);		
+			}
+
+		 catch (Exception e) {
+			e.printStackTrace();
+		}
+            
         }
         catch (SQLException E){
             JOptionPane.showMessageDialog(this, E);
@@ -1998,6 +2041,11 @@ public class ManagerHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_confirm8ActionPerformed
 
+    private void cust_id_txtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cust_id_txtKeyPressed
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_cust_id_txtKeyPressed
+
     
     void onHover(JPanel jp){
         jp.setBackground(new Color(220,220,220));
@@ -2082,7 +2130,7 @@ public class ManagerHome extends javax.swing.JFrame {
     private javax.swing.JTextField cust_name_txt;
     private javax.swing.JTextField cust_phone_TXT;
     private javax.swing.JPanel editEmployeeCard;
-    private javax.swing.JTextField emailTxt5;
+    private javax.swing.JTextField emailTxt;
     private javax.swing.JTextField engg_contact_txt;
     private javax.swing.JTextField engg_email_txt;
     private javax.swing.JTextField engg_id_txt;

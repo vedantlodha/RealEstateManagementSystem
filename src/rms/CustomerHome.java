@@ -49,6 +49,7 @@ public class CustomerHome extends javax.swing.JFrame {
         button1 = new javax.swing.JPanel();
         indicator1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        indicator2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         mainHeading = new javax.swing.JPanel();
@@ -110,6 +111,21 @@ public class CustomerHome extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Home");
         button1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 210, 37));
+
+        indicator2.setBackground(new java.awt.Color(119, 119, 119));
+
+        javax.swing.GroupLayout indicator2Layout = new javax.swing.GroupLayout(indicator2);
+        indicator2.setLayout(indicator2Layout);
+        indicator2Layout.setHorizontalGroup(
+            indicator2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        indicator2Layout.setVerticalGroup(
+            indicator2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        button1.add(indicator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, -1));
 
@@ -323,6 +339,7 @@ public class CustomerHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel button1;
     private javax.swing.JPanel indicator1;
+    private javax.swing.JPanel indicator2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

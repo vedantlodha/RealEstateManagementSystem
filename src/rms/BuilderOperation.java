@@ -77,6 +77,43 @@ public class BuilderOperation {
         return details;
         
     }
+    String[] getProjectDetais(String email)throws SQLException{
+        String query="select * from project where project_id=(select project_id from builder where email=?)";
+        PreparedStatement stmt=conn.prepareStatement(query);
+        stmt.setString(1, email);
+        ResultSet rs=stmt.executeQuery();
+        rs.next();
+        String project_id=Integer.toString(rs.getInt("project_id"));
+        String project_name=rs.getString("name");
+        int customer_id=rs.getInt("customer_id");
+        String budget=Integer.toString(rs.getInt("budget"));
+        String manager_id=Integer.toString(rs.getInt("manager_id"));
+        String etd=Integer.toString(rs.getInt("etd"));
+        query="select name from manager where manager_id=?";
+        stmt=conn.prepareStatement(query);
+        stmt.setInt(1, Integer.parseInt(manager_id));
+        rs=stmt.executeQuery();
+        rs.next();
+        String managerName=rs.getString("name");
+        System.out.println(customer_id);
+        query="select name,email from customer where customer_id=?";
+        stmt=conn.prepareStatement(query);
+        stmt.setInt(1,804);
+        rs=stmt.executeQuery();
+        rs.next();
+        String customerName=rs.getString("name");
+        String customerEmail=rs.getString("email");
+        String projectDetails[]={project_name,project_id,etd,budget,managerName,customerName,customerEmail};
+        return projectDetails;        
+    }
+    int updateBudget(int project_id,int newBudget)throws SQLException{
+        String query="update project set budget=? where project_id=?";
+        PreparedStatement stmt=conn.prepareStatement(query);
+        stmt.setInt(1, newBudget);
+        stmt.setInt(2, project_id);
+        int rowUpdated=stmt.executeUpdate();
+        return rowUpdated;
+    }
     
     
     
@@ -88,7 +125,8 @@ public class BuilderOperation {
 //    
     public static void main(String[] args)throws SQLException {
         BuilderOperation build=new BuilderOperation();
-        String details[]=build.getDetails("builder_1@gmail.com");
+        build.updateBudget(4, 5000000);
+        String details[]=build.getProjectDetais("builder_1@gmail.com");
         for(String s:details){
             System.out.println(s);
         }
